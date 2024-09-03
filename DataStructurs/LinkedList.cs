@@ -132,6 +132,26 @@ namespace DataStructurs
         }
         public void RemoveIndex(int index)
         {
+            if (index == 0 )
+            {
+                Head = Head.Next;
+                return;
+            }
+            if (Head == null)
+            {
+                return;
+            }
+            Node temp = Head;
+            while (temp.Next != null && index>0)
+            {
+                temp= temp.Next;
+                index--;    
+            }
+            if(index == 0)
+            {
+                temp.Next = temp.Next.Next;
+            }
+            
 
         }
 
