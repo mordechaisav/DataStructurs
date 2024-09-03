@@ -109,7 +109,7 @@ namespace DataStructurs
             }
         }
         // O(n)
-        public void RemoveAllValue(int data)
+        public void RemoveAllValues(int data)
         {
             if (Head == null)
             {
@@ -161,6 +161,51 @@ namespace DataStructurs
             
 
         }
+        public int Find(int data)
+        {
+            Node temp = Head;
+            int index = 0;
+
+            while (temp != null)
+            {
+                if (temp.Value == data)
+                {
+                    return index; 
+                }
+                temp = temp.Next; 
+                index++;
+            }
+
+            return -1; 
+        }
+        public int Get(int index)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException("Index must be non-negative.");
+            }
+
+            Node temp = Head;
+            int currentIndex = 0;
+
+            while (temp != null)
+            {
+                if (currentIndex == index)
+                {
+                    return temp.Value; 
+                }
+                temp = temp.Next; 
+                currentIndex++; 
+            }
+
+            
+            throw new ArgumentOutOfRangeException("Index is out of range.");
+        }
+
+
+
+
+
 
 
     }
