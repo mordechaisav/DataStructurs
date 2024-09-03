@@ -40,11 +40,13 @@ namespace DataStructurs
     {
         private Node Head { get; set; }
         public LinkedList() { }
+        // O(1)
         public LinkedList(int data)
         {
             if (Head == null)
                 Head = new Node(data);
         }
+        // O(n)
         public void Add(int data)
         {
             if (Head == null) { Head = new Node(data); }
@@ -58,6 +60,7 @@ namespace DataStructurs
                 temp.Next = new Node(data);
             }
         }
+        // O(n)
         public string Display()
         {
             Node temp = Head;
@@ -69,6 +72,7 @@ namespace DataStructurs
             }
             return str;
         }
+        // O(n)
         public int Length()
         {
             int len = 0;
@@ -80,6 +84,7 @@ namespace DataStructurs
             }
             return len;
         }
+        // O(n)
         public void RemoveValue(int data)
         {
             if (Head == null)
@@ -103,6 +108,7 @@ namespace DataStructurs
                 temp = temp.Next;
             }
         }
+        // O(n)
         public void RemoveAllValue(int data)
         {
             if (Head == null)
@@ -130,6 +136,7 @@ namespace DataStructurs
             }
 
         }
+        // O(n)
         public void RemoveIndex(int index)
         {
             if (index == 0 )
