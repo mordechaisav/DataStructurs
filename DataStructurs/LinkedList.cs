@@ -10,8 +10,8 @@ namespace DataStructurs
 
     public class Node
     {
-        public int Value { get { return GetValue(); } set { SetValue(value); } }
-        public Node Next { get { return GetNext(); } set { SetNext(Next); } }
+        public int Value;
+        public Node Next;
         public int GetValue()
         {
             return Value;
@@ -102,8 +102,39 @@ namespace DataStructurs
                 }
                 temp = temp.Next;
             }
+        }
+        public void RemoveAllValue(int data)
+        {
+            if (Head == null)
+            {
+                return;
+            }
+            if (Head.Value == data)
+            {
+                Head = Head.Next;
+                return;
+            }
+            Node temp = Head;
+
+            while (temp.Next != null)
+            {
+                if (temp.Next.Value == data)
+                {
+                    temp.Next = temp.Next.Next;
+                }
+                else
+                {
+
+                    temp = temp.Next;
+                }
+            }
 
         }
+        public void RemoveIndex(int index)
+        {
+
+        }
+
 
     }
 }
