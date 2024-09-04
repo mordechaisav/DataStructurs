@@ -65,9 +65,15 @@ namespace DataStructurs
         {
             Node temp = Head;
             string str = "";
+            if (temp!= null)
+            {
+                str +=temp.Value.ToString();
+                temp = temp.Next;
+            }
             while (temp != null)
             {
-                str += temp.Value.ToString();
+                str += " -> "+temp.Value.ToString();
+              
                 temp = temp.Next;
             }
             return str;
@@ -111,56 +117,68 @@ namespace DataStructurs
         // O(n)
         public void RemoveAllValues(int data)
         {
+          
+            while (Head != null && Head.Value == data)
+            {
+                Head = Head.Next;
+            }
+
+           
             if (Head == null)
             {
                 return;
             }
-            if (Head.Value == data)
-            {
-                Head = Head.Next;
-                return;
-            }
-            Node temp = Head;
 
-            while (temp.Next != null)
+           
+            Node temp = Head.Next;
+            Node prev = Head;
+
+            while (temp != null)
             {
-                if (temp.Next.Value == data)
+                if (temp.Value == data)
                 {
-                    temp.Next = temp.Next.Next;
+                    prev.Next = temp.Next;
                 }
                 else
                 {
-
-                    temp = temp.Next;
+                    prev = temp;
                 }
+                temp = temp.Next;
             }
-
         }
+
         // O(n)
         public void RemoveIndex(int index)
         {
-            if (index == 0 )
+            if (index == 0)
             {
-                Head = Head.Next;
+                if (Head != null)
+                {
+                    Head = Head.Next;
+                }
                 return;
             }
-            if (Head == null)
-            {
-                return;
-            }
-            Node temp = Head;
-            while (temp.Next != null && index>0)
-            {
-                temp= temp.Next;
-                index--;    
-            }
-            if(index == 0)
-            {
-                temp.Next = temp.Next.Next;
-            }
-            
 
+            if (Head == null || index < 0)
+            {
+                return;
+            }
+
+            Node temp = Head;
+            Node prev = null;
+
+            for (int i = 0; i < index && temp.Next != null; i++)
+            {
+                prev = temp;
+                temp = temp.Next;
+            }
+
+            if (temp != null && prev != null)
+            {
+                prev.Next = temp.Next;
+            }
         }
+
         public int Find(int data)
         {
             Node temp = Head;
@@ -182,10 +200,13 @@ namespace DataStructurs
         {
             if (index < 0)
             {
-                throw new ArgumentOutOfRangeException("Index must be non-negative.");
+                return -1;
             }
-
             Node temp = Head;
+            if (temp == null)
+            {
+                return -1;
+            }
             int currentIndex = 0;
 
             while (temp != null)
@@ -198,8 +219,8 @@ namespace DataStructurs
                 currentIndex++; 
             }
 
-            
-            throw new ArgumentOutOfRangeException("Index is out of range.");
+
+            return -1;
         }
 
 
