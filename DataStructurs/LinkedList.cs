@@ -8,34 +8,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace DataStructurs
 {
 
-    public class Node
-    {
-        public int Value;
-        public Node Next;
-        public int GetValue()
-        {
-            return Value;
-        }
-        public void SetValue(int value)
-        {
-            Value = value;
-        }
-        public Node GetNext()
-        {
-            return this.Next;
-        }
-        public void SetNext(Node node)
-        {
-            Next = node;
-        }
-
-        public Node(int data)
-        {
-            Value = data;
-        }
-
-
-    }
+   
     public class LinkedList
     {
         private Node Head { get; set; }
